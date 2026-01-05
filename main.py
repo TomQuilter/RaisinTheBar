@@ -1,6 +1,11 @@
 from config.local import RAISIN_DATA_PATH, LEARNING_RATE, NUM_ITERATIONS
 from utils.data_preprocessing import preprocess_data
 from config.model.LogisticRegression import LogisticRegression
+import numpy as np
+
+#2do 
+# can i change the code when asked questions
+# choose one of the extension questions ... and develop it myself
 
 def main():
     """
@@ -12,7 +17,7 @@ def main():
 
     # Load and preprocess data
     print("Loading and preprocessing data...")
-    x_train, x_val, x_test, y_train, y_val, y_test = preprocess_data(RAISIN_DATA_PATH)
+    x_train, x_val, x_test, y_train, y_val, y_test, train_min, train_range = preprocess_data(RAISIN_DATA_PATH)
 
     # Create model object (OOP way!)
     print("Creating Logistic Regression model...")
@@ -41,6 +46,10 @@ def main():
   
     historyfromtheobject = TheLogisitcRegressionModel.TQPrintHistoy() 
     print("Call the val_nll_history", historyfromtheobject['epoch_indices']) 
-     
+    
+    # Predict on a new made-up raisin
+    new_raisin = ((np.array([[90000, 450, 260, 0.82, 92000, 0.75, 1200]]) - train_min.values) / train_range.values).T
+    print(f"\nPrediction on new raisin: {TheLogisitcRegressionModel.predict(new_raisin)[0,0]}")
+      
 if __name__ == "__main__":
     main() 

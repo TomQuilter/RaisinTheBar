@@ -93,4 +93,4 @@ def preprocess_data(data):
 
     print("Nice!")
 
-    return x_train, x_val, x_test, y_train, y_val, y_test 
+    return x_train, x_val, x_test, y_train, y_val, y_test, train_min, train_range 
