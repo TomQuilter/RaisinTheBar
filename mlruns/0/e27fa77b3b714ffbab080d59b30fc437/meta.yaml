@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/e27fa77b3b714ffbab080d59b30fc437/artifacts
+end_time: 1767716620803
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e27fa77b3b714ffbab080d59b30fc437
+run_name: bold-carp-697
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767716617910
+status: 3
+tags: []
+user_id: tomqu

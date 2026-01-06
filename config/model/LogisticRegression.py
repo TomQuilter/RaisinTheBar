@@ -78,6 +78,9 @@ class LogisticRegression:
         loss = -y * np.log(probabilities) - (1 - y) * np.log(1 - probabilities)
         nll = np.sum(loss) / X.shape[1]
         
+        # Runtime validation: ensure loss is finite
+        self._validate_loss_finite(nll)
+        
         # Backward: calculate gradients (how to update)
         error = probabilities - y
         gradient_weight = np.dot(X, error.T) / X.shape[1]
@@ -100,6 +103,10 @@ class LogisticRegression:
         
         loss = -y * np.log(probabilities) - (1 - y) * np.log(1 - probabilities)
         nll = np.sum(loss) / X.shape[1]
+        
+        # Runtime validation: ensure loss is finite
+        self._validate_loss_finite(nll)
+        
         return nll
     
     @staticmethod
@@ -108,6 +115,12 @@ class LogisticRegression:
         y_true_flat = y_true.flatten()
         y_pred_flat = y_pred.flatten()
         return np.mean(y_pred_flat == y_true_flat)
+    
+    @staticmethod
+    def _validate_loss_finite(loss_value):
+        """Simple runtime validation: Check that loss is finite (not NaN, not infinity)."""
+        assert np.isfinite(loss_value).all() if isinstance(loss_value, np.ndarray) else np.isfinite(loss_value), \
+            "Loss is not finite (NaN or infinity)"
 
     def TQFn(self, x_train):
 
@@ -155,6 +168,7 @@ class LogisticRegression:
         for epoch in range(self.max_iterations):
             # Calculate loss and gradients 
             train_nll, gradients = self._forward_and_backprop(x_train, y_train)
+            # Runtime validation already performed in _forward_and_backprop
             train_nll_history[epoch] = train_nll   # just log values
             
             # Employ the gradient descent via the gradients calculated back  prop
@@ -172,11 +186,13 @@ class LogisticRegression:
                 
                 # Check validation set
                 val_nll = self._compute_nll(x_val, y_val)
+                # Runtime validation already performed in _compute_nll
                 y_val_pred = self.predict(x_val)
                 val_acc = self._compute_accuracy(y_val, y_val_pred)
                 
                 # Check test set
                 test_nll = self._compute_nll(x_test, y_test)
+                # Runtime validation already performed in _compute_nll
                 y_test_pred = self.predict(x_test)
                 test_acc = self._compute_accuracy(y_test, y_test_pred)
                 

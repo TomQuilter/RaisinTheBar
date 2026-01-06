@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/647454485097659427/d275c0cfa3d84508b1b3d2e299db9a2c/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '647454485097659427'
+lifecycle_stage: active
+run_id: d275c0cfa3d84508b1b3d2e299db9a2c
+run_name: bittersweet-boar-104
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767715686772
+status: 1
+tags: []
+user_id: tomqu

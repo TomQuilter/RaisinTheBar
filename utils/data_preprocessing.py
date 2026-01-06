@@ -9,7 +9,7 @@ def preprocess_data(data):
     # Read in the data
 
     db = pd.read_csv(data)
-
+ 
     print("DataPreShuffle = ", db)
 
     # Shuffle the dataset rows

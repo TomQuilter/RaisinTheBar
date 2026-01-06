@@ -1,6 +1,6 @@
 # Raisin Regression
 
-So this is a project where I'm training a logistic regression model to classify raisins.I built it using an OOP approach because why not make it a bit more organised. 
+So this is a project where I'm training a logistic regression model to classify raisins. 
 
 ## What's this about?
 

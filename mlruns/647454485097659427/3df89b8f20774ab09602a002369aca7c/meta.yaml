@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/647454485097659427/3df89b8f20774ab09602a002369aca7c/artifacts
+end_time: 1767715591736
+entry_point_name: ''
+experiment_id: '647454485097659427'
+lifecycle_stage: active
+run_id: 3df89b8f20774ab09602a002369aca7c
+run_name: unique-crow-649
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767715582271
+status: 3
+tags: []
+user_id: tomqu
