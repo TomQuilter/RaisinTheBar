@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/909887dfd82f49308c4a0e566f0f897f/artifacts
+end_time: 1767780299807
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 909887dfd82f49308c4a0e566f0f897f
+run_name: luxuriant-gnat-222
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767780299659
+status: 4
+tags: []
+user_id: tomqu

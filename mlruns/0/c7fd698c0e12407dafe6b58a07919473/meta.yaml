@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/c7fd698c0e12407dafe6b58a07919473/artifacts
+end_time: 1767718383217
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c7fd698c0e12407dafe6b58a07919473
+run_name: bouncy-shrimp-376
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767718372291
+status: 3
+tags: []
+user_id: tomqu

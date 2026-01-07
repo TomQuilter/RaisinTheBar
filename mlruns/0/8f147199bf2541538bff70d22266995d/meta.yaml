@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/8f147199bf2541538bff70d22266995d/artifacts
+end_time: 1767718287827
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8f147199bf2541538bff70d22266995d
+run_name: likeable-midge-613
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767717316123
+status: 3
+tags: []
+user_id: tomqu

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/65e50dfd94a54ef9bcfe7efa40578fac/artifacts
+end_time: 1767719780074
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 65e50dfd94a54ef9bcfe7efa40578fac
+run_name: stately-fox-253
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767719775042
+status: 4
+tags: []
+user_id: tomqu

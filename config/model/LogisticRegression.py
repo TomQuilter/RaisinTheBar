@@ -21,12 +21,10 @@ class LogisticRegression:
     
     def __init__(self, learning_rate=0.01, max_iterations=4000, random_seed=42):
         """
-        This is called when you create a new model.
-        It's like setting up a new machine with default settings.
         
         Args:
             learning_rate: How big steps to take when learning
-            max_iterations: How many times to try learning
+            max_iterations: 
             random_seed: For reproducible results
         """
         # Store these settings in the object (so we remember them)
@@ -35,16 +33,14 @@ class LogisticRegression:
         self.random_seed = random_seed
         
         # These will be set later when we train
-        # They're like empty slots that get filled during training
-        self.weight = None  # Will store the learned weights
-        self.bias = None     # Will store the learned bias
-        self.history = {}    # Will store training history
+        self.weight = None  # learned weights
+        self.bias = None     # learned bias
+        self.history = {}    # training history
     
     # ============================================================
-    # HELPER METHODS (internal functions, not called directly)
-    # ============================================================
-    
-    @staticmethod
+    # HELPER METHODS 
+    # ========================================================
+    @staticmethod   ###  
     def _sigmoid(z):
         """
         The sigmoid function - converts any number to 0-1 range.
@@ -97,9 +93,7 @@ class LogisticRegression:
         """Calculate loss for validation/test (no gradients needed)."""
         logits = np.dot(self.weight.T, X) + self.bias
         probabilities = self._sigmoid(logits)
-        
-        epsilon = 1e-15
-        probabilities = np.clip(probabilities, epsilon, 1 - epsilon)
+
         
         loss = -y * np.log(probabilities) - (1 - y) * np.log(1 - probabilities)
         nll = np.sum(loss) / X.shape[1]
@@ -137,25 +131,11 @@ class LogisticRegression:
     # ============================================================
     
     def fit(self, x_train, y_train, x_val, y_val, x_test, y_test):
-        """
-        Takes in the data ...
-        Train the model! This is the main function you call.
-        
-        BEFORE (functional style):
-            weight, bias = initializing_weight_bias(...)
-            trained_params, history = update_parameters(weight, bias, ...)
-        
-        NOW (OOP style):
-            model = LogisticRegression()
-            history = model.fit(...)  # weight and bias stored inside model!
-        
-        Notice: We don't need to pass weight/bias around anymore!
-        The model remembers them in self.weight and self.bias.
-        """
-        # Step 1: Initialize weights and bias
+ 
+        # Initialize weights and bias
         self._initialize_parameters(x_train.shape[0])
         
-        # Step 2: Set up tracking arrays
+        # Set up tracking arrays
         train_nll_history = np.zeros(self.max_iterations)
         val_nll_history = []
         test_nll_history = []
@@ -164,7 +144,7 @@ class LogisticRegression:
         test_acc_history = []
         epoch_indices = []
         
-        # Step 3: Training loop
+        # Training loop
         for epoch in range(self.max_iterations):
             # Calculate loss and gradients 
             train_nll, gradients = self._forward_and_backprop(x_train, y_train)
@@ -175,7 +155,7 @@ class LogisticRegression:
             # Update weights and bias (stored in self!)
             self.weight = self.weight - gradients["weight"] * self.learning_rate
             self.bias = self.bias - gradients["bias"] * self.learning_rate
-            
+             
             # Every 100 epochs, check how we're doing
             if epoch % 100 == 0:
   
@@ -225,13 +205,7 @@ class LogisticRegression:
     def predict(self, X):
         """
         Make predictions using the trained model.
-        
-        BEFORE (functional style):
-            y_pred = make_predictions(weight, bias, X)  # Had to pass weight/bias
-        
-        NOW (OOP style):
-            y_pred = model.predict(X)  # Model already knows its weight/bias!
-        """
+        """ 
         # Use self.weight and self.bias (the model remembers them!)
         logits = np.dot(self.weight.T, X) + self.bias
         probabilities = self._sigmoid(logits)
@@ -245,7 +219,7 @@ class LogisticRegression:
     def plot_training_curves(self, num_of_iters):
         """
         Plot the training curves.
-        
+         
         BEFORE (functional style):
             plot_training_curves(history, num_of_iters)  # Had to pass history
         

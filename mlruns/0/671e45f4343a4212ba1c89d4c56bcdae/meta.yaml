@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/671e45f4343a4212ba1c89d4c56bcdae/artifacts
+end_time: 1767780367440
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 671e45f4343a4212ba1c89d4c56bcdae
+run_name: orderly-perch-987
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767780363796
+status: 3
+tags: []
+user_id: tomqu

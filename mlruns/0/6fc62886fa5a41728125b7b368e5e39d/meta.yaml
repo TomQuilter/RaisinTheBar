@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/6fc62886fa5a41728125b7b368e5e39d/artifacts
+end_time: 1767719612405
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6fc62886fa5a41728125b7b368e5e39d
+run_name: marvelous-foal-99
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767719608269
+status: 4
+tags: []
+user_id: tomqu

@@ -25,7 +25,7 @@ def main():
 
     # Start MLflow run - use default experiment to avoid hanging
     with mlflow.start_run():
-        # Log parameters
+        # Log parameters ... http://127.0.0.1:5000/ 
         mlflow.log_param("learning_rate", learning_rate)
         mlflow.log_param("max_iterations", num_of_iters)
         mlflow.log_param("random_seed", RANDOM_SEED)
@@ -34,17 +34,17 @@ def main():
         mlflow.log_param("n_val_samples", x_val.shape[1])
         mlflow.log_param("n_test_samples", x_test.shape[1])
 
-        # Create model object (OOP way!)
+        # Create model
         print("Creating Logistic Regression model...")
         TheLogisitcRegressionModel = LogisticRegression(
             learning_rate=learning_rate,
             max_iterations=num_of_iters
-        )
+        ) 
 
-        # Train the model (model stores weight/bias internally!)
+        # Train the model 
         print("Training model...")
         history = TheLogisitcRegressionModel.fit(x_train, y_train, x_val, y_val, x_test, y_test)
-
+ 
         # Log metrics
         final_train_acc = history['train_acc'][-1]
         final_val_acc = history['val_acc'][-1]
@@ -79,6 +79,10 @@ def main():
         historyfromtheobject = TheLogisitcRegressionModel.TQPrintHistoy() 
         print("Call the val_nll_history", historyfromtheobject['epoch_indices']) 
         
+        # Print the final weights and bias
+ 
+        #
+
         # Predict on a new made-up raisin
         new_raisin = ((np.array([[90000, 450, 260, 0.82, 92000, 0.75, 1200]]) - train_min.values) / train_range.values).T
         print(f"\nPrediction on new raisin: {TheLogisitcRegressionModel.predict(new_raisin)[0,0]}")
