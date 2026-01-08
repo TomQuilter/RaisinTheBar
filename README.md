@@ -1,46 +1,42 @@
-# Raisin Regression
+# Hi Fuzzy Labs! :)
+ 
+I started with more raw function based implementation to get a feel for the problem and validate the approach, I did this "manually" which was great fun ... I then restructured into oop code for better scalability and cleaner code ostly myself and using LLMs a bit, while making sure I drove and understood each part of the restructuring.  
+ 
+Ive put in two unit tests, but havent had time to put lots of them in. I've put in one runtime test.
+ 
+Ive used ML Flow and some logging.
 
-So this is a project where I'm training a logistic regression model to classify raisins. 
+I've just done the Main regression task so far, I'll do one of the extension tasks soon (was going to do it tonight but got sick).
 
-## What's this about?
+Cheers, Tom 
 
-Basically, I'm using a raisin dataset to train a logistic regression classifier from scratch. The model learns to classify raisins based on some features 
-
-## How it works
-
-The main script (`main.py`) does a few things:
-1. Loads and preprocesses the raisin data
-2. Splits it into train/validation/test sets
-3. Creates a LogisticRegression model object
-4. Trains it and tracks the training history
-5. Shows you the final accuracy scores and plots some training curves
-
-## Setup
-
-You'll need Python and probably some standard ML libraries (numpy, pandas, matplotlib, etc.). I haven't made a requirements.txt yet, but you'll figure it out.
-
-The data should be in `data/Raisin_Dataset.csv`. Make sure that's there before running.
-
-## Running it
-
-Just run:
-```bash
-python main.py
-```
-
-It'll print out some progress messages, show you the final accuracies, and generate some plots showing how the model learned over time.
+# Raisin Classification with Logistic Regression
+ 
+This is me building a logistic regression model from scratch to classify raisins. No  libraries - just  Python (was fun!)
+ 
+Trained a binary classifier to tell the difference between two types of raisins (Kecimen and Besni) based on their features.  Just gradient descent and some lovely matrix maths.  
 
 ## Project structure
 
-- `main.py` - The main script that ties everything together
-- `config/` - Configuration files for training parameters and data paths
-- `data/` - Where the raisin dataset lives
-- `utils/` - Helper functions for data preprocessing and splitting
-- `config/model/` - The LogisticRegression class implementation
+- `main.py` - The main script that runs everything
+- `config/model/LogisticRegression.py` - The model class (all the math happens here)
+- `utils/data_preprocessing.py` - Loads and preprocesses the data
+- `utils/train_test_split.py` - Custom train/val/test splitter (no sklearn!)
+- `config/training_config.json` - Hyperparameters live here
+- `config/local.py` - Paths and config loading
+- `training.log` - Log file (created automatically)
 
-## Notes
+## The model
 
-The model stores its weights and bias internally, which is nice. You can also access the training history through the model object if you want to do more analysis later.
-
-That's pretty much it. Nothing too fancy, just a clean implementation of logistic regression with some basic training visualization.
+The `LogisticRegression` class does everything:
+- Initializes weights and bias
+- Forward pass (predictions)
+- Backward pass (gradient calculation)
+- Gradient descent updates
+- Computes loss and accuracy
+- Builds confusion matrices
+- Plots training curves
+ 
+It's all in one class, so you can create a model, train it, and use it to make predictions.
+ 
 

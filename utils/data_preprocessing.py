@@ -1,10 +1,33 @@
+"""
+Data preprocessing utilities for raisin classification.
+
+Handles data loading, cleaning, encoding, splitting, and normalization.
+"""
+
 from config.local import RAISIN_DATA_PATH, RANDOM_SEED, TEST_SPLIT, VAL_SPLIT
 from utils.train_test_split import train_val_test_split
 
 import numpy as np
 import pandas as pd
- 
+
+
 def preprocess_data(data):
+    """
+    Load and preprocess raisin dataset.
+    
+    Args:
+        data: Path to CSV file containing raisin data
+        
+    Returns:
+        x_train, x_val, x_test, y_train, y_val, y_test, train_min, train_range
+        - Feature matrices and labels for train/val/test sets
+        - train_min and train_range for normalization (to normalize new data)
+        
+    Raises:
+        FileNotFoundError: If data file doesn't exist
+        ValueError: If data is invalid or missing required columns
+        RuntimeError: For unexpected errors during processing
+    """
 
     #### Read in the data ####
     try:
