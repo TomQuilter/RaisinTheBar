@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/46bd6e02fdfe422e82b5acf38d90f18f/artifacts
+end_time: 1767817841606
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 46bd6e02fdfe422e82b5acf38d90f18f
+run_name: awesome-conch-541
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767817838279
+status: 3
+tags: []
+user_id: tomqu

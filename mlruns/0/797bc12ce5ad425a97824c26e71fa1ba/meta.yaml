@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/797bc12ce5ad425a97824c26e71fa1ba/artifacts
+end_time: 1767817052198
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 797bc12ce5ad425a97824c26e71fa1ba
+run_name: delicate-fowl-527
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767817049139
+status: 3
+tags: []
+user_id: tomqu

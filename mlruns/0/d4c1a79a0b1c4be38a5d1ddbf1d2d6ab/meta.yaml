@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/d4c1a79a0b1c4be38a5d1ddbf1d2d6ab/artifacts
+end_time: 1767817366205
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d4c1a79a0b1c4be38a5d1ddbf1d2d6ab
+run_name: hilarious-finch-876
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767817366123
+status: 4
+tags: []
+user_id: tomqu

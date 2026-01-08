@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/626a61d783ea4ca289ed00795971b163/artifacts
+end_time: 1767816625172
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 626a61d783ea4ca289ed00795971b163
+run_name: adorable-zebra-965
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767816625077
+status: 4
+tags: []
+user_id: tomqu

@@ -1,8 +1,8 @@
 {
   "training": {
-    "learning_rate": 0.05,
+    "learning_rate": 0.01,
     "num_iterations": 4000,
-    "random_seed": 42    
+    "random_seed": 42     
   },  
   "split": {
     "test_split": 0.25,

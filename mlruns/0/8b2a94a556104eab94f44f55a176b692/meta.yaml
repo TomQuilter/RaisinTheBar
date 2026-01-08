@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/8b2a94a556104eab94f44f55a176b692/artifacts
+end_time: 1767874790004
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8b2a94a556104eab94f44f55a176b692
+run_name: chill-sponge-769
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767874777867
+status: 3
+tags: []
+user_id: tomqu

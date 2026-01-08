@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/eee45fcbe91b4b7089962d580d494ad5/artifacts
+end_time: 1767815666120
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: eee45fcbe91b4b7089962d580d494ad5
+run_name: unequaled-trout-795
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767815661296
+status: 3
+tags: []
+user_id: tomqu

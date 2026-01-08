@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/ba7117d4172b4098b70435fbd98d9a61/artifacts
+end_time: 1767807143194
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ba7117d4172b4098b70435fbd98d9a61
+run_name: charming-colt-171
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767807140571
+status: 3
+tags: []
+user_id: tomqu

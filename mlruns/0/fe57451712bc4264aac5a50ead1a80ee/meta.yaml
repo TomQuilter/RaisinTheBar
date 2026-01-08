@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/fe57451712bc4264aac5a50ead1a80ee/artifacts
+end_time: 1767807075320
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fe57451712bc4264aac5a50ead1a80ee
+run_name: wise-turtle-858
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767807072046
+status: 3
+tags: []
+user_id: tomqu

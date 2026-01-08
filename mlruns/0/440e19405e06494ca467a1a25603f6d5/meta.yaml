@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/440e19405e06494ca467a1a25603f6d5/artifacts
+end_time: 1767816830573
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 440e19405e06494ca467a1a25603f6d5
+run_name: tasteful-jay-185
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767816827712
+status: 3
+tags: []
+user_id: tomqu

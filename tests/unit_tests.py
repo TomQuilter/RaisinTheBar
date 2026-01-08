@@ -36,8 +36,8 @@ class Unit_Tests(unittest.TestCase):
         # Create model 
         model = LogisticRegression(learning_rate=0.01, random_seed=42)
         
-        # Initialize parameters
-        model._initialize_parameters(X.shape[0])
+        # initialise parameters
+        model._initialise_parameters(X.shape[0])
         
         # Get initial loss
         initial_loss, _ = model._forward_and_backprop(X, y)

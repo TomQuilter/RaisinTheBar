@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/38570c4ad9b64098bccc111e102aee8c/artifacts
+end_time: 1767787110768
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 38570c4ad9b64098bccc111e102aee8c
+run_name: efficient-sow-532
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767787108035
+status: 3
+tags: []
+user_id: tomqu

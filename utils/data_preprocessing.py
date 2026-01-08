@@ -17,8 +17,8 @@ def preprocess_data(data):
    
     print("DataPostShuffle = ", db)
  
-    # db = db.head(1000) #TQ to remove 
-       
+    db = db.head(40) #TQ to remove 
+        
     print ("data = " , db)
   
     # print(db["Class"])  

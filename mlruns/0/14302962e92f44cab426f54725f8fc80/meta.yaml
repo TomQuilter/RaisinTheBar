@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/14302962e92f44cab426f54725f8fc80/artifacts
+end_time: 1767786464475
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 14302962e92f44cab426f54725f8fc80
+run_name: delightful-frog-523
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767786442212
+status: 3
+tags: []
+user_id: tomqu

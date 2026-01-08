@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/a51bcbe1143141c091ad0064efcba91a/artifacts
+end_time: 1767786824310
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a51bcbe1143141c091ad0064efcba91a
+run_name: bustling-lamb-685
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767786824232
+status: 4
+tags: []
+user_id: tomqu

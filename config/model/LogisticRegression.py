@@ -1,38 +1,41 @@
 """
-Logistic Regression Model - Class-Based Implementation
+Logistic Regression Model
 
-This converts all the separate functions into a single class.
-Think of it like putting all your tools in one toolbox!
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+import json
+from pathlib import Path
 
 class LogisticRegression:
-    """
-    A class that represents a Logistic Regression model.
     
-    Think of this like a "machine" that:
-    1. Stores its own weights and bias (the "memory")
-    2. Can train itself (the "learning" function)
-    3. Can make predictions (the "prediction" function)
-    """
-    
-    def __init__(self, learning_rate=0.01, max_iterations=4000, random_seed=42):
+    def __init__(self, learning_rate: float = None, max_iterations: int = None, random_seed: int = None) -> None:
         """
         
         Args:
-            learning_rate: How big steps to take when learning
-            max_iterations: 
-            random_seed: For reproducible results
+            learning_rate: How big steps to take when learning (defaults to JSON config)
+            max_iterations: Maximum number of training iterations (defaults to JSON config)
+            random_seed: For reproducible results (defaults to JSON config)
         """
-        # Store these settings in the object (so we remember them)
-        self.learning_rate = learning_rate
-        self.max_iterations = max_iterations
-        self.random_seed = random_seed
+        # Load config from JSON file
+        config_dir = Path(__file__).resolve().parent.parent
+        config_path = config_dir / "training_config.json"
+
+        if config_path.exists():
+            with open(config_path, 'r') as f:
+                config = json.load(f)
+            training_config = config['training']
+        else: 
+            print("Conf File Not Found")
+            exit(1) 
+
+  
+        # Set Attributes ...
+        self.learning_rate = learning_rate if learning_rate is not None else training_config['learning_rate']
+        self.max_iterations = max_iterations if max_iterations is not None else training_config['num_iterations']
+        self.random_seed = random_seed if random_seed is not None else training_config['random_seed']
         
-        # These will be set later when we train
         self.weight = None  # learned weights
         self.bias = None     # learned bias
         self.history = {}    # training history
@@ -41,40 +44,30 @@ class LogisticRegression:
     # HELPER METHODS 
     # ========================================================
     @staticmethod   ###  
-    def _sigmoid(z):
-        """
-        The sigmoid function - converts any number to 0-1 range.
-        The @staticmethod means it doesn't need 'self' - it's just a utility.
-        """
+    def _sigmoid(z: np.ndarray) -> np.ndarray:
         return 1 / (1 + np.exp(-z))
-    
-    def _initialize_parameters(self, n_features):
-        """
-        Initialize weights and bias to starting values.
-        Notice: it uses 'self' - so it can store things in the object!
-        """
+     
+    def _initialise_parameters(self, n_features: int) -> None:
         np.random.seed(self.random_seed)
-        # Store these in self.weight and self.bias (the object remembers them)
         self.weight = np.full((n_features, 1), 0.01)
         self.bias = 0.0
     
-    def _forward_and_backprop(self, X_values_Train_Val_OrTest, y_values_Train_Val_OrTest):
+    def _forward_and_backprop(self, X_values_Train_Val_OrTest: np.ndarray, y_values_Train_Val_OrTest: np.ndarray) -> tuple:
         """ 
-
         Do one step: predict, calculate loss, calculate gradients.
         Returns the loss and how to update weights.
         """ 
         X = X_values_Train_Val_OrTest
         y = y_values_Train_Val_OrTest 
         # Forward: calculate predictions
-        logits = np.dot(self.weight.T, X) + self.bias  # Notice: uses self.weight!
+        logits = np.dot(self.weight.T, X) + self.bias  
         probabilities = self._sigmoid(logits)
         
         # Calculate loss
         loss = -y * np.log(probabilities) - (1 - y) * np.log(1 - probabilities)
         nll = np.sum(loss) / X.shape[1]
         
-        # Runtime validation: ensure loss is finite
+        # Runtime CHECK - Make sure loss is finite! Common issue in training
         self._validate_loss_finite(nll)
         
         # Backward: calculate gradients (how to update)
@@ -88,13 +81,12 @@ class LogisticRegression:
         }
         
         return nll, gradients
-    
-    def _compute_nll(self, X, y):
+     
+    def _compute_nll(self, X: np.ndarray, y: np.ndarray) -> float:
         """Calculate loss for validation/test (no gradients needed)."""
         logits = np.dot(self.weight.T, X) + self.bias
         probabilities = self._sigmoid(logits)
 
-        
         loss = -y * np.log(probabilities) - (1 - y) * np.log(1 - probabilities)
         nll = np.sum(loss) / X.shape[1]
         
@@ -104,36 +96,53 @@ class LogisticRegression:
         return nll
     
     @staticmethod
-    def _compute_accuracy(y_true, y_pred):
+    def _compute_accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
         """Calculate how many predictions were correct."""
         y_true_flat = y_true.flatten()
         y_pred_flat = y_pred.flatten()
         return np.mean(y_pred_flat == y_true_flat)
-    
+
+    @staticmethod   
+    def _confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray) -> np.ndarray:
+        """Compute confusion matrix for binary classification.
+        
+        Returns a 2x2 matrix:
+        [[TN, FP],
+         [FN, TP]]
+        where:
+        - TN: True Negatives (pred=0, true=0)
+        - FP: False Positives (pred=1, true=0)
+        - FN: False Negatives (pred=0, true=1)
+        - TP: True Positives (pred=1, true=1)
+        """
+        y_true_flat = y_true.flatten().astype(int)
+        y_pred_flat = y_pred.flatten().astype(int)
+        
+        # Initialize 2x2 confusion matrix
+        cm = np.zeros((2, 2), dtype=int)
+        
+        # Count each combination using simple loop
+        for i in range(len(y_true_flat)):
+            true_val = y_true_flat[i]
+            pred_val = y_pred_flat[i]
+            cm[true_val, pred_val] += 1
+        
+        return cm
+
     @staticmethod
-    def _validate_loss_finite(loss_value):
+    def _validate_loss_finite(loss_value: float) -> None:
         """Simple runtime validation: Check that loss is finite (not NaN, not infinity)."""
         assert np.isfinite(loss_value).all() if isinstance(loss_value, np.ndarray) else np.isfinite(loss_value), \
             "Loss is not finite (NaN or infinity)"
 
-    def TQFn(self, x_train):
-
-        print("the current weights are", self.weight)
-
-        # print("the current x_train are", x_train)
-    
-        #print("the current y_true are", self.y_true)
- 
-        return  
-    
     # ============================================================
     # MAIN METHODS (these are what you call from outside)
     # ============================================================
     
-    def fit(self, x_train, y_train, x_val, y_val, x_test, y_test):
+    def fit(self, x_train: np.ndarray, y_train: np.ndarray, x_val: np.ndarray, y_val: np.ndarray, x_test: np.ndarray, y_test: np.ndarray) -> dict:
  
-        # Initialize weights and bias
-        self._initialize_parameters(x_train.shape[0])
+        # initialise weights and bias
+        self._initialise_parameters(x_train.shape[0])
         
         # Set up tracking arrays
         train_nll_history = np.zeros(self.max_iterations)
@@ -158,8 +167,7 @@ class LogisticRegression:
              
             # Every 100 epochs, check how we're doing
             if epoch % 100 == 0:
-  
-                self.TQFn(x_train)
+   
                 # Make predictions just for accuracy purposes using current weights
                 y_train_pred = self.predict(x_train)
                 train_acc = self._compute_accuracy(y_train, y_train_pred)
@@ -175,7 +183,7 @@ class LogisticRegression:
                 # Runtime validation already performed in _compute_nll
                 y_test_pred = self.predict(x_test)
                 test_acc = self._compute_accuracy(y_test, y_test_pred)
-                
+  
                 # Store metrics
                 epoch_indices.append(epoch)
                 val_nll_history.append(val_nll)
@@ -185,9 +193,14 @@ class LogisticRegression:
                 test_acc_history.append(test_acc)
                 
                 # Print progress
-                print(f'{epoch} train: {round(train_nll, 3)} {round(train_acc, 3)}; '
-                      f'val: {round(val_nll, 3)} {round(val_acc, 3)}; '
-                      f'test: {round(test_nll, 3)} {round(test_acc, 3)}')
+                print(f'{epoch} train loss: {round(train_nll, 3)} train acc: {round(train_acc, 3)}; '
+                      f'val loss: {round(val_nll, 3)} val acc: {round(val_acc, 3)}; '
+                      f'test loss: {round(test_nll, 3)} test acc: {round(test_acc, 3)}')
+        
+        # Compute final predictions for confusion matrices
+        y_train_pred_final = self.predict(x_train)
+        y_val_pred_final = self.predict(x_val)
+        y_test_pred_final = self.predict(x_test)
         
         # Store history in the object
         self.history = {
@@ -197,12 +210,15 @@ class LogisticRegression:
             'train_acc': np.array(train_acc_history),
             'val_acc': np.array(val_acc_history),
             'test_acc': np.array(test_acc_history),
-            'epoch_indices': np.array(epoch_indices)
+            'epoch_indices': np.array(epoch_indices),
+            'train_cm': self._confusion_matrix(y_train, y_train_pred_final),
+            'val_cm': self._confusion_matrix(y_val, y_val_pred_final),
+            'test_cm': self._confusion_matrix(y_test, y_test_pred_final)
         }
         
         return self.history
     
-    def predict(self, X):
+    def predict(self, X: np.ndarray) -> np.ndarray:
         """
         Make predictions using the trained model.
         """ 
@@ -211,21 +227,9 @@ class LogisticRegression:
         probabilities = self._sigmoid(logits)
         predictions = (probabilities >= 0.5).astype(float)
         return predictions
-
-    def TQPrintHistoy(self): 
-
-        return self.history 
     
-    def plot_training_curves(self, num_of_iters):
-        """
-        Plot the training curves.
-         
-        BEFORE (functional style):
-            plot_training_curves(history, num_of_iters)  # Had to pass history
-        
-        NOW (OOP style):
-            model.plot_training_curves(num_of_iters)  # Model has its own history!
-        """
+    def plot_training_curves(self, num_of_iters: int) -> None:
+
         epoch_indices = self.history['epoch_indices']
         
         # Plot 1: NLL curves
@@ -239,7 +243,7 @@ class LogisticRegression:
         plt.title('NLL Curves')
         plt.legend()
         plt.grid(True)
-        
+         
         # Plot 2: Accuracy curves
         plt.subplot(1, 2, 2)
         plt.plot(epoch_indices, self.history['train_acc'], label='Train Accuracy', marker='o')
@@ -250,6 +254,31 @@ class LogisticRegression:
         plt.title('Accuracy Curves')
         plt.legend()
         plt.grid(True)
-        
+         
         plt.tight_layout()
         plt.show()
+    
+    def print_confusion_matrix_stats(self) -> None:
+        """Print confusion matrix statistics for train, validation, and test sets."""
+        print("\n" + "="*60)
+        print("Confusion Matrix Statistics")
+        print("="*60)
+
+        #print("self.history['train_cm']", self.history['train_cm'])
+          
+        for dataset_name, cm in [("Train", self.history['train_cm']), 
+                                 ("Validation", self.history['val_cm']), 
+                                 ("Test", self.history['test_cm'])]:
+            tn, fp, fn, tp = cm[0, 0], cm[0, 1], cm[1, 0], cm[1, 1]
+            total = tn + fp + fn + tp
+            
+            print(f"\n{dataset_name} Set:")
+            print(f"  Confusion Matrix:")
+            print(f"    [[TN={tn:4d}, FP={fp:4d}]")
+            print(f"     [FN={fn:4d}, TP={tp:4d}]]")
+            print(f"  True Negatives (TN):  {tn:4d} ({tn/total*100:.2f}%)")
+            print(f"  False Positives (FP): {fp:4d} ({fp/total*100:.2f}%)")
+            print(f"  False Negatives (FN): {fn:4d} ({fn/total*100:.2f}%)")
+            print(f"  True Positives (TP):  {tp:4d} ({tp/total*100:.2f}%)")
+            print(f"  Total: {total}")
+

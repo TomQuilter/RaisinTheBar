@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/516ecf2510bf4d988f6cc8a2a4d5fe68/artifacts
+end_time: 1767816521040
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 516ecf2510bf4d988f6cc8a2a4d5fe68
+run_name: charming-mule-752
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767816520957
+status: 4
+tags: []
+user_id: tomqu

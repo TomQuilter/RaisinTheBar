@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/f7bb37fd1e184906920f509177890c73/artifacts
+end_time: 1767788939440
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f7bb37fd1e184906920f509177890c73
+run_name: industrious-tern-601
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767788923836
+status: 3
+tags: []
+user_id: tomqu

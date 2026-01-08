@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/67adbe6a65534208b5d16f1d7faa29c4/artifacts
+end_time: 1767786866288
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 67adbe6a65534208b5d16f1d7faa29c4
+run_name: rumbling-trout-179
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767786854881
+status: 4
+tags: []
+user_id: tomqu

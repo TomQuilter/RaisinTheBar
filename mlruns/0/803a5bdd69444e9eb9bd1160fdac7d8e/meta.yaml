@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/803a5bdd69444e9eb9bd1160fdac7d8e/artifacts
+end_time: 1767806575529
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 803a5bdd69444e9eb9bd1160fdac7d8e
+run_name: judicious-mule-765
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767806572870
+status: 4
+tags: []
+user_id: tomqu

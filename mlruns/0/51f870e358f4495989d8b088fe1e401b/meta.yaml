@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/51f870e358f4495989d8b088fe1e401b/artifacts
+end_time: 1767817269141
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 51f870e358f4495989d8b088fe1e401b
+run_name: serious-gnu-328
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767817266259
+status: 3
+tags: []
+user_id: tomqu

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/16fff4e9bb0d44faa7c9e430743b0433/artifacts
+end_time: 1767798570298
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 16fff4e9bb0d44faa7c9e430743b0433
+run_name: chill-bee-211
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767798567220
+status: 3
+tags: []
+user_id: tomqu

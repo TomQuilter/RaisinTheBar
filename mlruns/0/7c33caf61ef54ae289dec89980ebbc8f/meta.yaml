@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/7c33caf61ef54ae289dec89980ebbc8f/artifacts
+end_time: 1767817011577
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7c33caf61ef54ae289dec89980ebbc8f
+run_name: whimsical-crane-537
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767817011437
+status: 4
+tags: []
+user_id: tomqu
