@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/7bdce0c980264dfa912e747164eee7d1/artifacts
+end_time: 1767875532015
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7bdce0c980264dfa912e747164eee7d1
+run_name: flawless-skink-368
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767875526649
+status: 3
+tags: []
+user_id: tomqu

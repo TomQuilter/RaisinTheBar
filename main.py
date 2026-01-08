@@ -19,7 +19,11 @@ def main():
 
     # Load and preprocess data
     print("Loading and preprocessing data...")
-    x_train, x_val, x_test, y_train, y_val, y_test, train_min, train_range = preprocess_data(RAISIN_DATA_PATH)
+    try:
+        x_train, x_val, x_test, y_train, y_val, y_test, train_min, train_range = preprocess_data(RAISIN_DATA_PATH)
+    except (FileNotFoundError, ValueError, RuntimeError) as e:
+        print(f"Error loading data: {e}")
+        return
 
     # Start MLflow run - use default experiment to avoid hanging
     with mlflow.start_run():
@@ -42,22 +46,27 @@ def main():
         # Train the model 
         print("Training model...")
         history = TheLogisitcRegressionModel.fit(x_train, y_train, x_val, y_val, x_test, y_test)
- 
+  
         # Log metrics
-        final_train_acc = history['train_acc'][-1]
-        final_val_acc = history['val_acc'][-1]
-        final_test_acc = history['test_acc'][-1]
-        
-        mlflow.log_metric("final_train_accuracy", final_train_acc)
-        mlflow.log_metric("final_val_accuracy", final_val_acc)
-        mlflow.log_metric("final_test_accuracy", final_test_acc)
-        
-        # Log final loss
-        if len(history['val_nll']) > 0:
-            mlflow.log_metric("final_val_loss", history['val_nll'][-1])
-        train_nll_array = history['train_nll']
-        if len(train_nll_array) > 0:
-            mlflow.log_metric("final_train_loss", train_nll_array[-1])
+        try:
+            final_train_acc = history['train_acc'][-1]
+            final_val_acc = history['val_acc'][-1]
+            final_test_acc = history['test_acc'][-1]
+            
+            mlflow.log_metric("final_train_accuracy", final_train_acc)
+            mlflow.log_metric("final_val_accuracy", final_val_acc)
+            mlflow.log_metric("final_test_accuracy", final_test_acc)
+            
+            # Log final loss
+            if len(history['val_nll']) > 0:
+                mlflow.log_metric("final_val_loss", history['val_nll'][-1])
+            train_nll_array = history['train_nll']
+            if len(train_nll_array) > 0:
+                mlflow.log_metric("final_train_loss", train_nll_array[-1])
+        except (KeyError, IndexError) as e:
+            print(f"Warning: Could not log all metrics: {e}")
+        except Exception as e:
+            print(f"Warning: Error logging metrics to MLflow: {e}")
 
         # Display results
         print("\n" + "="*60)

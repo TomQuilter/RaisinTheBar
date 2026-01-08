@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/tomqu/Documents/Fuzzy%20Labs/Raisin_Regression/mlruns/0/9f43b21baf2144399327cb6012cde66d/artifacts
+end_time: 1767876757802
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9f43b21baf2144399327cb6012cde66d
+run_name: amusing-hawk-555
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767876754118
+status: 3
+tags: []
+user_id: tomqu

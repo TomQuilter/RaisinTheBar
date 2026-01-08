@@ -22,13 +22,32 @@ class LogisticRegression:
         config_dir = Path(__file__).resolve().parent.parent
         config_path = config_dir / "training_config.json"
 
-        if config_path.exists():
+        try:
+            if not config_path.exists():
+                raise FileNotFoundError(f"Configuration file not found: {config_path}")
+            
             with open(config_path, 'r') as f:
                 config = json.load(f)
+            
+            if 'training' not in config:
+                raise KeyError("'training' key not found in configuration file")
+            
             training_config = config['training']
-        else: 
-            print("Conf File Not Found")
-            exit(1) 
+            
+            # Validate required keys exist
+            required_keys = ['learning_rate', 'num_iterations', 'random_seed']
+            missing_keys = [key for key in required_keys if key not in training_config]
+            if missing_keys:
+                raise KeyError(f"Missing required configuration keys: {missing_keys}")
+                
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"Configuration file error: {e}") from e
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON in configuration file {config_path}: {e}") from e
+        except KeyError as e:
+            raise KeyError(f"Configuration error: {e}") from e
+        except Exception as e:
+            raise RuntimeError(f"Unexpected error loading configuration: {e}") from e 
 
   
         # Set Attributes ...
@@ -121,11 +140,11 @@ class LogisticRegression:
         # Initialize 2x2 confusion matrix
         cm = np.zeros((2, 2), dtype=int)
         
-        # Count each combination using simple loop
+        # Uses the 0 and 1s as co-ords of the 2 by 2 matrix, lovely stuff
         for i in range(len(y_true_flat)):
             true_val = y_true_flat[i]
             pred_val = y_pred_flat[i]
-            cm[true_val, pred_val] += 1
+            cm[true_val, pred_val] += 1 
         
         return cm
 
@@ -263,8 +282,9 @@ class LogisticRegression:
         print("\n" + "="*60)
         print("Confusion Matrix Statistics")
         print("="*60)
-
-        #print("self.history['train_cm']", self.history['train_cm'])
+        
+        # Class labels: 0 = Besni, 1 = Kecimen (based on encoding in data_preprocessing)
+        class_names = {0: "Besni", 1: "Kecimen"}
           
         for dataset_name, cm in [("Train", self.history['train_cm']), 
                                  ("Validation", self.history['val_cm']), 
@@ -274,11 +294,14 @@ class LogisticRegression:
             
             print(f"\n{dataset_name} Set:")
             print(f"  Confusion Matrix:")
-            print(f"    [[TN={tn:4d}, FP={fp:4d}]")
-            print(f"     [FN={fn:4d}, TP={tp:4d}]]")
-            print(f"  True Negatives (TN):  {tn:4d} ({tn/total*100:.2f}%)")
-            print(f"  False Positives (FP): {fp:4d} ({fp/total*100:.2f}%)")
-            print(f"  False Negatives (FN): {fn:4d} ({fn/total*100:.2f}%)")
-            print(f"  True Positives (TP):  {tp:4d} ({tp/total*100:.2f}%)")
-            print(f"  Total: {total}")
+            print(f"                    Predicted")
+            print(f"                  {class_names[0]:8s} {class_names[1]:8s}")
+            print(f"  True {class_names[0]:6s} [{tn:4d}      {fp:4d}     ]")
+            print(f"       {class_names[1]:6s} [{fn:4d}      {tp:4d}     ]")
+            print(f"\n  Breakdown:")
+            print(f"    True Negatives (TN):  {tn:4d} ({tn/total*100:.2f}%) - Correctly predicted {class_names[0]}")
+            print(f"    False Positives (FP): {fp:4d} ({fp/total*100:.2f}%) - Predicted {class_names[1]}, but was {class_names[0]}")
+            print(f"    False Negatives (FN): {fn:4d} ({fn/total*100:.2f}%) - Predicted {class_names[0]}, but was {class_names[1]}")
+            print(f"    True Positives (TP):  {tp:4d} ({tp/total*100:.2f}%) - Correctly predicted {class_names[1]}")
+            print(f"    Total: {total}")
 
