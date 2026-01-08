@@ -1,6 +1,6 @@
 # Hi Fuzzy Labs! :)
  
-I started with more raw function based implementation to get a feel for the problem and validate the approach, I did this "manually" which was great fun ... I then restructured into oop code for better scalability and cleaner code ostly myself and using LLMs a bit, while making sure I drove and understood each part of the restructuring.  
+I started with an initial function based implementation to get a feel for the problem and validate the approach, I did this "manually" which was great fun ... I then restructured into oop code for better scalability and cleaner code mostly myself and using LLMs a bit, while making sure I drove and understood each part of the restructuring.   
  
 Ive put in two unit tests, but havent had time to put lots of them in. I've put in one runtime test.
  
