@@ -1,6 +1,6 @@
 from config.local import RAISIN_DATA_PATH, LEARNING_RATE, NUM_ITERATIONS, RANDOM_SEED
 from utils.data_preprocessing import preprocess_data
-from config.model.LogisticRegression import LogisticRegression
+from models.LogisticRegression import LogisticRegression
 import numpy as np
 import mlflow
 import logging
@@ -15,7 +15,7 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
+ 
 def main():
 
     # MLfloww

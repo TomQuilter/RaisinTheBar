@@ -49,8 +49,8 @@ def preprocess_data(data):
     # Shuffle the dataset rows
     db = db.sample(frac=1, random_state=RANDOM_SEED).reset_index(drop=True)
 
-    db = db.head(40) #TQ to remove - for quick testing 
-        
+    # db = db.head(40) # - for quick testing when needed 
+         
     db["Class"] = [1 if each == "Kecimen" else 0 for each in db["Class"]]
    
     ## Split the output labels from the features

@@ -17,7 +17,7 @@ class LogisticRegression:
             random_seed: For reproducible results (defaults to JSON config)
         """
         # Load conf
-        config_dir = Path(__file__).resolve().parent.parent
+        config_dir = Path(__file__).resolve().parent.parent / "config"
         config_path = config_dir / "training_config.json"
 
         try:
@@ -280,4 +280,3 @@ class LogisticRegression:
         print(f"    False Negatives (FN): {fn:4d} ({fn/total*100:.2f}%) - Predicted {class_names[0]}, but was {class_names[1]}")
         print(f"    True Positives (TP):  {tp:4d} ({tp/total*100:.2f}%) - Correctly predicted {class_names[1]}")
         print(f"    Total: {total}")  
-

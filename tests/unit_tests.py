@@ -15,7 +15,7 @@ import numpy as np
 
 # Add parent directory to path to import the model
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from config.model.LogisticRegression import LogisticRegression
+from models.LogisticRegression import LogisticRegression
  
 class Unit_Tests(unittest.TestCase):
     
